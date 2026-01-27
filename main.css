@@ -1,0 +1,44 @@
+/* this is a CSS comment - this is the only comment style 
+CSS syntax:
+
+selector{
+    property: value;
+    property: value;
+}
+
+selector: 3 options: HTML tag/element, ID of an element (#id), Custom class - starts . (.classname)
+
+Just use external CSS files in this class
+*/
+
+/* body will apply to the whole page */
+body{
+   background-color: rgb(10, 10, 131); 
+   color: white;
+}
+
+/* header will just apply to the section with the title */
+header{
+    text-align: center;
+}
+
+nav{
+    height: 600px;
+    width: 200px;
+    float: left;
+    padding: 5px;
+    line-height: 30px;
+}
+
+#memeImage{
+    /*position: absolute;
+    left: 200px;
+    top: 200px;*/
+}
+
+footer{
+    text-align: center;
+    margin-right: 200px;
+}
+
+
