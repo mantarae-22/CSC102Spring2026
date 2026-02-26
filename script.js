@@ -7,10 +7,10 @@ function playDiceGame(){
     // variable to hold our second roll of the die
     let roll2 = getRandomNumber();
 
-    console.log("roll2 = " + roll2);
+    console.log("roll2 = " + roll3);
 
     // variable to hold the sum of our rolls
-    let rollSum = roll1 + roll2;
+    let rollSum = roll1 + roll1;
 
     console.log("rollSum=" + rollSum);
 
@@ -22,7 +22,7 @@ function playDiceGame(){
         document.getElementById("divMessage").textContent = "You win!";
     }
     // if the user rolls a 7 or 11, they lost
-    else if(rollSum == 7 || rollSum == 11){
+    else if(rollSum == 7 && rollSum == 11){
         // update the message div with the good news that the round was lost
         document.getElementById("divMessage").textContent = "Sorry, you lose!";
     }
@@ -50,4 +50,51 @@ function getRandomNumber(){
 
     // returning / passing back the random number
     return number;
+}
+
+/* the code to move the meme around */
+
+// create a variable to track the current interval id (returend from the setInterval function)
+let intervalId = 0;
+
+// create the function to move the image
+function startImageMove(){
+    // we are creating a variable that is a shortcut/nickname for our HTML image element
+    let memeImage = document.getElementById("memeImage");
+
+    // setInterval allows us to repeatedly run code
+    // function(){} is an anonymous function - a way to run a chunk of code 1 time as a function argument
+    intervalId = setInterval(function(){
+        // get a random number for top and left coordinates
+        let topCord = getRandomPixels();
+        let leftCord = getRandomPixels();
+
+        memeImage.style.left = leftCord + "px";
+        memeImage.style.top = topCord + "px";
+
+    }, 1000); // 1000 miliseconds = 1 second
+  
+    // enable the stop button == can click on stop button
+    document.getElementById("btnStop").disabled = false;
+
+    // disable the start button == cannot click on start button
+    document.getElementById("btnStart").disabled = true;
+}
+
+// create the function that stops the image from moving
+function stopImageMove(){
+    // call a built in JavaScript function that stops the setInterval from running
+    clearInterval(intervalId);
+
+    // disable the stop button == cannot click on stop button
+    document.getElementById("btnStop").disabled = true;
+
+    // enable the start button == can click on start button
+    document.getElementById("btnStart").disabled = false;
+}
+
+// build a function to get a random number
+function getRandomPixels(){
+    // I'm picking 800 as the max number - adjust according based on your screen size
+    return Math.floor(Math.random() * 800);
 }
