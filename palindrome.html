@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+
+    <!-- add a link to the css file -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>Palindrome Checker</h1>
+    </header>
+    <main>
+        <form onsubmit="checkPalin(event);">
+            <!-- label to explain to the user what info we need -->
+            <label for="txtWord">Enter a word or phrase:</label>
+            <!-- text box for the user to be able to type in a word -->
+            <input type="text" id="txtWord">
+            <!-- the button so the user can test the word -->
+            <input type="submit" value="Check Word">
+        </form>
+
+        <!-- create a div to hold the result of the palindrome check -->
+        <div id="divMessage"></div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

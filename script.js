@@ -1,16 +1,16 @@
 function playDiceGame(){
     // variable to hold our first roll of the die
-    let roll1 = getRandomNumber();
+    let roll1 = getRandomNumber(6, false);
 
     console.log("roll1 =", roll1);
 
     // variable to hold our second roll of the die
-    let roll2 = getRandomNumber();
+    let roll2 = getRandomNumber(6, false);
 
-    console.log("roll2 = " + roll3);
+    console.log("roll2 = " + roll2);
 
     // variable to hold the sum of our rolls
-    let rollSum = roll1 + roll1;
+    let rollSum = roll1 + roll2;
 
     console.log("rollSum=" + rollSum);
 
@@ -40,17 +40,28 @@ function playDiceGame(){
 
 }
 
-// function will generate a random number between 1 and 6
-function getRandomNumber(){
-    // get a random number between 0 and 1 and multiply by 6
-    let number = Math.random() * 6;
+// function will generate a random number between 1 and max
+function getRandomNumber(max, includeZero){
+    // get a random number between 0 and 1 and multiply by max
+    let number = Math.random() * max;
 
-    // this will round our number up, so we get a number between 1 and 6
-    number = Math.floor(number) + 1;
+    // this will round our number down, so we get a number between 0 and max (exclusive)
+    if (includeZero){
+        number = Math.floor(number);
+    }// this will round our number down, but we add 1 so that we get a number between 1 and max (inclusive)
+    else{
+        number = Math.floor(number) + 1;
+    }
 
     // returning / passing back the random number
     return number;
 }
+
+// build a function to get a random number
+/*function getRandomPixels(){
+    // I'm picking 800 as the max number - adjust according based on your screen size
+    return Math.floor(Math.random() * 800);
+}*/
 
 /* the code to move the meme around */
 
@@ -66,8 +77,9 @@ function startImageMove(){
     // function(){} is an anonymous function - a way to run a chunk of code 1 time as a function argument
     intervalId = setInterval(function(){
         // get a random number for top and left coordinates
-        let topCord = getRandomPixels();
-        let leftCord = getRandomPixels();
+        // I want coordinates between 0 and 800
+        let topCord = getRandomNumber(801, true);
+        let leftCord = getRandomNumber(801, true);
 
         memeImage.style.left = leftCord + "px";
         memeImage.style.top = topCord + "px";
@@ -93,8 +105,111 @@ function stopImageMove(){
     document.getElementById("btnStart").disabled = false;
 }
 
-// build a function to get a random number
-function getRandomPixels(){
-    // I'm picking 800 as the max number - adjust according based on your screen size
-    return Math.floor(Math.random() * 800);
+
+// this function will validate the user input based on the requirements of the client (assignment requirements)
+function validate(){
+    // first name variable
+    let firstName = document.getElementById("txtFirstName").value;
+
+    // show the first name in the console
+    console.log("firstName=" + firstName);
+
+    // last name variable
+    let lastName = document.getElementById("txtLastName").value;
+
+    // show the last name in the console
+    console.log("lastName=" + lastName);
+
+    // zip code variable
+    let zip = document.getElementById("txtZip").value;
+
+    // show the zip in the console
+    console.log("zip=" + zip);
+
+    // create a variable to hold the first name + " " + last name
+    let fullName = firstName + " " + lastName;
+
+    console.log("fullName=" + fullName);
+
+    // create a variable to hold the message we will show to the user
+    let message = "";
+
+    // we need to make sure the full name does not exceed 20 characters
+    if (fullName.length == 1 || fullName.length > 20){
+        message = "Please enter a name that is less than 20 characters.";
+    }
+    // the zip code can only have 5 characters
+    else if (zip.length != 5){
+        message = "Please enter a 5 digit zip code.";
+    }
+    // otherwise, the user has entered everything correctly, and they get the secret word
+    else{
+        message = "The secret word is validation!";
+    }
+    
+    console.log("message=" + message);
+
+    // display the message on the associate div
+    document.getElementById("divMessage").textContent = message;
 }
+
+// Palindrome checking code
+ // create the checkPalin function
+ function checkPalin(event){
+    // prevent the form from submitting (so the page does not refresh)
+    event.preventDefault();
+
+    // create a variable to store the word that the user entered
+    let wordToTest = document.getElementById("txtWord").value;
+    
+    console.log("wordToTest=" + wordToTest);
+
+    // call the function to test it
+    // TODO: print out the result to the user
+    let bPalin = isPalin(wordToTest);
+
+    // create a shortcut to the message div
+    let divMessage = document.getElementById("divMessage");
+
+    // create a message for the user based on the value of bPalin
+    if (bPalin){ // if(bPalin) is equivalent to if (bPalin == true)
+        // show the user a message
+        divMessage.textContent = "The phrase is a palindrome!";
+    }
+    else{
+        divMessage.textContent = "The phrase is NOT a palindrome!";
+    }
+}
+
+// create a function to test to see if a string is the same backwards and forwards
+function isPalin(strToTest){
+    // I want to convert the string to all lowercase so that it is a more fair comparison
+    strToTest = strToTest.toLowerCase();
+    // replace all instances /g of spaces /\s with an empty string
+    strToTest = strToTest.replace(/\s/g, "");
+
+    console.log("strToTest=" + strToTest);
+
+    // create a new variable so can keep the original string for testing
+    let strReverse = strToTest;
+
+    // convert the reverse string to an array, we will reverse the contents
+    // so test would become tset and then convert the array back to a string
+    strReverse = strReverse.split("").reverse().join("");
+
+    console.log("strReverse=" + strReverse);
+
+    // compare the original string with the reversed string
+    // if they match, this function will return true, otherwise it will return false
+    if (strReverse == strToTest){
+        return true;
+    }
+    /*
+    else{
+        return false
+    }
+    */
+    // if we get to this line, it must not have been a palindrome, so return false; this is equivalent to the else above - include only 1 or the other
+    return false;
+}
+
