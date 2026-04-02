@@ -213,3 +213,52 @@ function isPalin(strToTest){
     return false;
 }
 
+  // this function will add an audio element to the page so we can listen to a sound clip
+  function addAudio(){
+    // this is the shortcut/nickname for the div that would hold the audio
+    let divAudio = document.getElementById("divAudio");
+
+    // create an audio HTML element using JavaScript
+    let audioElement = document.createElement("audio");
+    // set the attributes of our new HTML element
+    // add an ID so we can more easily work with this element
+    audioElement.setAttribute("id", "myAudio");
+
+    // add the file name as the source
+    // if you are using the sound file provided in the assignment, your code will look like this:
+    // audioElement.setAttribute("src", "us-lab-background.mp3");
+    audioElement.setAttribute("src", "Crisp_Ocean_Waves-Mike_Koenig-1486046376.mp3");
+
+    // highly suggested - add controls
+    audioElement.setAttribute("controls", "controls");
+
+    // set the volume to 0 by default
+    audioElement.volume = 0;
+
+    // add our new HTML audio element to the div that will host it
+    divAudio.appendChild(audioElement);
+
+    // disallow the user from clicking the add audio button now that the audio has been added to the webpage
+    document.getElementById("btnAddAudio").hidden = true;
+
+    // make the play and pause buttons appear
+    document.getElementById("btnPlayAudio").hidden = false;
+    document.getElementById("btnPauseAudio").hidden = false;
+}
+
+// create the function so that we can play the audio
+function playAudio(){
+    // create a shortcut/nickname to the audio element that we created in the addAudio function
+    let myAudio = document.getElementById("myAudio");
+    // let's play the sound!
+    myAudio.play();
+}
+
+// create the function so that we can stop playing the audio - really pause it
+function pauseAudio(){
+    // create a shortcut/nickname to the audio element that we created in the addAudio function
+    let myAudio = document.getElementById("myAudio");
+    // let's pause the sound!
+    myAudio.pause();
+}
+
