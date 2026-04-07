@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Manager</title>
+
+     <!-- add a link to the css file -->
+     <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <!-- h1 is heading1 the page title -->
+        <h1>Housesitting Plant Manager</h1>
+    </header>
+
+    <div>
+        <!-- any messages for the user will go here -->
+        <div id="divMessage"></div>
+
+        <ul id="ulPlants"></ul>
+
+        <div>** To delete a plant, click on its name **</div>
+
+        <h2>Add a plant</h2>
+        <label for="txtNewPlant">Plant name:</label> <input type="text" id="txtNewPlant">
+        <button onclick="addPlant();">Add Plant</button>
+    </div>
+
+    <script src="plants.js"></script>
+</body>
+</html>
