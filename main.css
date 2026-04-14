@@ -46,3 +46,27 @@ footer{
 }
 
 
+table{
+    border: 2px solid rgb(76, 10, 138);
+    /* this will cause multiple overlapping borders to collapse into a single border */
+    border-collapse: collapse;
+}
+
+tr{
+    border: 2px solid rgb(123, 39, 200);
+    
+}
+
+td{
+    padding: 5px;
+}
+
+tr:nth-child(even){
+    background-color: rgb(201, 196, 196);
+    color: navy;
+}
+
+tr:hover{
+    color: rgb(201, 196, 196);
+    background-color: rgb(34, 34, 211);
+}
