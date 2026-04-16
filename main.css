@@ -70,3 +70,16 @@ tr:hover{
     color: rgb(201, 196, 196);
     background-color: rgb(34, 34, 211);
 }
+
+button{
+    background-color: rgb(244, 238, 238);
+    color: navy;
+    padding: 8px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: rgb(86, 245, 218);
+}
