@@ -22,8 +22,19 @@
     <!-- header is a semantic HTML tag 
       header - typically has logo and/or menu -->
     <header>
+        <!-- this is where my menu will live - so I can navigate to all my pages -->
+        <nav>
+            <a href="index.html">Index</a>
+            <a href="boards.html">Boards</a>
+            <a href="palindrome.html">Palindrome</a>
+            <a href="plants.html">Plants</a>
+            <a href="strings.html">Strings</a>
+            <a href="table.html">Table</a>
+        </nav>
+
         <!-- h1 is heading1 the page title -->
         <h1>Welcome to my CSC102 landing page</h1>
+
     </header>
 
     <button id="btnStart" onclick="startImageMove();">Start Move Image</button>
@@ -125,6 +136,115 @@
     </script>
    
     <h3>Loops</h3>
+
+    <script>
+        // 2 main kinds of loops:
+        // for loop - when we know how many times the loop should run
+        //   for loops are often used when processing/displaying data
+        // while loop - when we don't know how many times the loop should run
+        //   while loops are great when working with user input
+
+        // create function to get some numbers and add them together
+        function runCalc(){
+            // set up 2 variables to hold the numbers that the user eventually gives us
+            let num1 = 0;
+            let num2 = 0;
+
+            // this variable will hold the condition that our while loop is going to test
+            let isValid = false;
+
+            // set up our while loop to ask for number 1
+            // as long as isValid = false, this loop will run            
+            // make sure there is an "off ramp" to your while loops - infinite while loops crash your program
+           /* while (!isValid){
+                // ask the user for number 1 using a JavaScript prompt
+                num1 = prompt("Please enter number 1: ");
+
+                // isNan = isNotANumber - this returns true if the user entered a string, such as "eight"
+                if (isNaN(num1)){
+                    //alert("Please enter a valid number between 0 and 9");
+                } // if the else statement runs, it means that the user entered a number
+                else{
+                    // changing isvalid to true, gets us out of this loop
+                    isValid = true;
+                }
+            }*/
+
+            // reset isValid to false so that the next while loop will run
+        /*    isValid = false;
+            // for getting number 2 from the user
+            while (!isValid){
+                // ask the user for number 2 using a JavaScript prompt
+                num2 = prompt("Please enter number 2: ");
+
+                // isNan = isNotANumber - this returns true if the user entered a string, such as "eight"
+                if (isNaN(num2)){
+                    //alert("Please enter a valid number between 0 and 9");
+                } // if the else statement runs, it means that the user entered a number
+                else{
+                    // changing isvalid to true, gets us out of this loop
+                    isValid = true;
+                }
+            }
+
+            // we have 2 numeric values, add them together and show the user
+            let sumNow = parseInt(num1) + parseInt(num2);
+
+            //console.log("sumNow =" + sumNow);
+*/
+            //alert("The sum is: " + sumNow);
+        }
+
+        // call the function we just wrote to ask the user for numbers
+        runCalc();
+
+
+        // define the Animal class we built the UML for
+        class Animal{
+            // constructor - allows us to quickly create a new object
+            constructor(new_species, kingdom, genus, family, color, age){
+                // we set up our properties on the fly
+                this.species = new_species;
+                this.kingdom = kingdom;
+                this.genus = genus;
+                this.family = family;
+                this.color = color;
+                this.age = age;
+            }
+
+            setFamily(new_family){
+                this.family = new_family;
+                // we would also need to change the other properties of genus, family, species
+            }
+
+            getFamily(){
+                return this.family;
+            }
+
+            eat(){
+                // technically, we should return true or false, based on our UML diagram
+                return "the animal had some food";
+            }
+
+            makeSound(){
+                return "Animals in this family make this sound";
+            }
+        }
+
+        // create an animal object to bring our class to life
+        let cat = new Animal("Felis", "Animalia", "Sphinx", "Felidae", "black", 2);
+
+        console.log(cat.eat());
+        console.log(cat.makeSound());
+        console.log(cat.getFamily());
+
+        // create a dog object
+        let dog = new Animal("Canine", "Animal", "Latin word for Dog", "Dog", "yellow", 5);
+
+        console.log(dog.eat());
+        console.log(dog.makeSound());
+        console.log(dog.getFamily());
+    </script>
 </body>
 <!-- the closing html tag should be at the very end of the file -->
 </html> <!-- closing tag -->
